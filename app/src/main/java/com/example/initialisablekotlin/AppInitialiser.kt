@@ -2,13 +2,25 @@ package com.example.initialisablekotlin
 
 import com.example.initialisablekotlin.InitialisableEvent.Companion.APP_INIT_COMPLETE
 import com.example.initialisablekotlin.dependencies.*
+import org.greenrobot.eventbus.EventBus
 
 class AppInitialiser : Initialisable() {
+
+    override fun onInit(): Boolean {
+        MLog.log("main onInit")
+        EventBus.getDefault().post(InitialisableEvent(APP_INIT_COMPLETE,this))
+        return true
+    }
+
     override fun getInitCompleteEvent(): InitialisableEvent {
-        return InitialisableEvent(APP_INIT_COMPLETE)
+        MLog.log("main getInitCompleteEvent")
+
+        return InitialisableEvent(APP_INIT_COMPLETE,this)
     }
 
     override fun provideDependencies(): List<Initialisable> {
+        MLog.log("main provideDependencies")
+
         val dependencies : ArrayList<Initialisable> = ArrayList()
 
         dependencies.add(Dependency1)
@@ -22,6 +34,7 @@ class AppInitialiser : Initialisable() {
     }
 
     init {
+        MLog.log("softInit " + getName())
         softInit()
     }
 }

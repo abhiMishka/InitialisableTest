@@ -5,8 +5,10 @@ import android.util.Log
 class MLog{
 
     companion object {
+        const val INIT_TAG = "Initialisable"
+
         fun log(message: String) {
-            Log.i(Initialisable.INIT_TAG, message)
+            Log.i(INIT_TAG, message)
         }
     }
 }

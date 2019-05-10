@@ -1,11 +1,24 @@
 package com.example.initialisablekotlin.dependencies
 
+import android.os.AsyncTask
+import com.example.initialisablekotlin.BgTaskPerformer
 import com.example.initialisablekotlin.Initialisable
 import com.example.initialisablekotlin.InitialisableEvent
+import com.example.initialisablekotlin.MLog
+import org.greenrobot.eventbus.EventBus
 
 object Dependency3 : Initialisable() {
+
+
+    override fun onInit(): Boolean {
+        MLog.log("onInit : " + getName())
+        val bgTask = BgTaskPerformer()
+        bgTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,this)
+        return true
+    }
+
     override fun getInitCompleteEvent(): InitialisableEvent {
-        return InitialisableEvent(InitialisableEvent.DEPENDENCY3_INITIALISED)
+        return InitialisableEvent(InitialisableEvent.DEPENDENCY3_INITIALISED,this)
     }
 
     override fun provideDependencies(): List<Initialisable> {
