@@ -1,6 +1,5 @@
 package com.example.initialisablekotlin
 
-import android.support.annotation.UiThread
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode

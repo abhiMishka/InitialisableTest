@@ -14,7 +14,7 @@ object Dependency1 : Initialisable(){
         MLog.log("onInit : " +getName())
         val bgTask = BgTaskPerformer()
         bgTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,this)
-        return false
+        return true
     }
 
     override fun getInitCompleteEvent(): InitialisableEvent {

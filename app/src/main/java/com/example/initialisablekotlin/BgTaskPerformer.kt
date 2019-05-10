@@ -10,7 +10,7 @@ import java.util.concurrent.ThreadLocalRandom
 class BgTaskPerformer : AsyncTask<Initialisable, Void, Initialisable>() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun doInBackground(vararg params: Initialisable): Initialisable {
-        val sleepTime : Long = ThreadLocalRandom.current().nextInt(1, 5).toLong()
+        val sleepTime : Long = ThreadLocalRandom.current().nextInt(1, 6).toLong()
         MLog.log("sleepTime " +sleepTime + " for " +params[0].getName())
 
         Thread.sleep(sleepTime * 1000)

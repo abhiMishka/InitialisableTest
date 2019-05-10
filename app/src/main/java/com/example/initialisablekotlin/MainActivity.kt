@@ -18,7 +18,11 @@ class MainActivity : AppCompatActivity() {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onAppInitEventReceived(initialisableEvents: InitialisableEvent){
-
+        when(initialisableEvents.eventName){
+            InitialisableEvent.APP_INIT_COMPLETE -> {
+                MLog.log("APP_INIT_COMPLETE")
+            }
+        }
     }
 
     override fun onStart() {
